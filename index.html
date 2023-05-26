@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- BOOTSTRAP -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="logic.js" defer></script>
+    <title>🌍 GeoVisualizer 🌎</title>
+  </head>
+  <body class="container-lg d-flex flex-column align-items-center flex-wrap">
+    <header class="py-5">
+      <h1 class="py-3 text-center">🌍 GeoVisualizer 🌎</h1>
+      <div class="text-center">
+        <h3>Try it out and see where it brings you!</h3>
+        <p>lat: 20.6666700, lon: -88.5666700</p>
+        <p>lat: 29.977296, lon: 31.132496</p>
+        <p>lat: 48.7784485, lon: 9.1800132</p>
+      </div>
+      <div class="d-flex pt-3 gap-1 justify-content-center">
+        <input type="tel" placeholder=" Latitude" class="lat_input" />
+        <input type="tel" placeholder=" Longitude" class="lon_input" />
+        <button class="search_btn">🔍</button>
+      </div>
+    </header>
+
+    <div class="">
+      <div class="coords_container"></div>
+      <div class="img_container"></div>
+    </div>
+  </body>
+</html>
