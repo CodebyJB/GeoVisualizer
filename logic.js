@@ -9,7 +9,6 @@ const searchBtn = document.querySelector(".search_btn");
 let keyword, imageUrl;
 
 const validateCoords = () => {
-  window.reload;
   const regex = /^[0-9.-]+$/;
 
   const isLatValid = regex.test(latInput.value);
@@ -23,6 +22,11 @@ const validateCoords = () => {
   }
   //   latInput.value = "";
   //   lonInput.value = "";
+};
+
+const renderError = function (msg) {
+  coordsContainer.innerHTML = msg;
+  imgContainer.innerHTML = "";
 };
 
 // ----- Nominatim API -----
@@ -45,11 +49,16 @@ const getCoords = (lat, lon) => {
   fetch(
     `https://nominatim.openstreetmap.org/reverse?format=geojson&lat=${+lat}&lon=${+lon}`
   )
-    .then((response) => response.json())
+    .then((response) => {
+      if (!response.ok)
+        throw new Error(`Coordinates not found. (${response.status})`);
+      return response.json();
+    })
     .then((data) => {
       renderCoords(data);
-    }).catch((error) => {
-      renderError(`Something went wrong! ${error}`);
+    })
+    .catch((error) => {
+      renderError(`Something went wrong! ${error.message}`);
     });
 };
 
@@ -93,7 +102,7 @@ const getImg = (keyword) => {
       renderImg(imageUrl, photographer, photographerID, photoAlt);
     })
     .catch((error) => {
-      renderError(`Something went wrong! ${error}`);
+      renderError(`Something went wrong! ${error.message}`);
     });
 };
 
