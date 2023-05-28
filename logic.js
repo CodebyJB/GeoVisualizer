@@ -20,8 +20,8 @@ const validateCoords = () => {
   if (isLatValid && isLonValid) {
     getCoords(latInput.value, lonInput.value);
   }
-  //   latInput.value = "";
-  //   lonInput.value = "";
+  latInput.value = "";
+  lonInput.value = "";
 };
 
 const renderError = function (msg) {
@@ -32,14 +32,14 @@ const renderError = function (msg) {
 // ----- Nominatim API -----
 
 const renderCoords = (data) => {
-  console.log(data);
+  // console.log(data);
   const html = `<div class="text-center">
   <h2>Welcome to ${data.features[0].properties.name.toUpperCase()}</h2>
   <p>${data.features[0].properties.display_name}</p>
 </div>`;
 
   keyword = `${data.features[0].properties.name}, ${data.features[0].properties.address.country}, ${data.features[0].properties.address.city}`;
-  console.log(keyword);
+  // console.log(keyword);
   getImg(keyword);
 
   coordsContainer.innerHTML = html;
@@ -69,7 +69,7 @@ const renderImg = (imageUrl, photographer, photographerID, photoAlt) => {
           <img src="${imageUrl}" alt="${keyword}" class="img-fluid object-fit-cover rounded  d-flex m-auto" />
           <figcaption class="text-center">
             <a href="https://www.pexels.com">Photos provided by Pexels</a>
-            <p>This<a href="${imageUrl}">Photo</a> was taken by 
+            <p>This <a href="${imageUrl}">Photo</a> was taken by 
               <a href="https://www.pexels.com/@${photographerID}">${photographer}</a>
                on Pexels.</p>
           </figcaption>`;
